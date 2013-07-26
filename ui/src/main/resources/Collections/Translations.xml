@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+  <web>Collections</web>
+  <name>Translations</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>Collections.WebHome</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1374670798000</creationDate>
+  <date>1374830035000</date>
+  <contentUpdateDate>1374830015000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <object>
+    <class>
+      <name>XWiki.TranslationDocumentClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <scope>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>scope</name>
+        <number>1</number>
+        <prettyName>Scope</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators> ,|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>GLOBAL|WIKI|USER|ON_DEMAND</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </scope>
+    </class>
+    <name>Collections.Translations</name>
+    <number>0</number>
+    <className>XWiki.TranslationDocumentClass</className>
+    <guid>053b61a4-eaa9-4da1-9b74-c35678497cf7</guid>
+    <property>
+      <scope>WIKI</scope>
+    </property>
+  </object>
+  <content>collections.appName=Collections
+collections.home.create=Create
+collections.home.create.hint=Create a new collection:
+collections.home.create.name=Name
+collections.home.create.name.hint=The name of the new collection. A document with the specified name will be created to store the collection.
+collections.home.create.type=Type
+collections.home.create.type.hint=The type of collection.
+collections.home.type.static=Static (a static list of documents)
+collections.home.type.query=Query (the list of documents returned by a database query)
+collections.home.type.link=Link (the list of documents reachable through wiki links from a given document)
+collections.home.type.hierarchy=Hierarchy (the list of children, grandchildren, .., of a given document)
+
+collections.livetable.doc.name=Name
+collections.livetable.type=Type
+collections.livetable.doc.author=Author
+collections.livetable.doc.date=Date
+collections.livetable._actions=Actions
+
+collections.static.pages.hint=The wiki pages included in this collection.
+
+collections.query.type.hint=The query language used.
+collections.query.statement.name=Query
+collections.query.statement.hint=The query statement.
+
+collections.link.root.hint=The name of the document to start from.
+
+collections.hierarchy.root.hint=The name of the document to start from.</content>
+</xwikidoc>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+  <web>Collections</web>
+  <name>DocumentPicker</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>Collections.WebHome</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1374670798000</creationDate>
+  <date>1374834271000</date>
+  <contentUpdateDate>1374833910000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <object>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators> ,|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators> ,|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <name>Collections.DocumentPicker</name>
+    <number>0</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>2f94fe75-32f0-4daa-8da7-bea99c11373e</guid>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>var XWiki = (function(XWiki) {
+// Start XWiki augmentation.
+var widgets = XWiki.widgets = XWiki.widgets || {};
+
+/**
+ * Extends the SuggestPicker to customize the way the selected documents are displayed.
+ */
+var DocumentPicker = Class.create(widgets.SuggestPicker, {
+  // @Override
+  addItem: function($super, suggestion) {
+    // Clear the previously selected document in single selection mode.
+    this.input.hasClassName('multipleSelection') || this.list.update('');
+    $super(suggestion);
+  }
+});
+
+var init = function(event) {
+  var options = {
+    script: XWiki.Document.getRestSearchURL("scope=name&amp;number=10&amp;media=json&amp;"),
+    varname: "q",
+    icon: "$xwiki.getSkinFile('icons/silk/page_white_text.png')",
+    noresults: "Document not found",
+    json: true,
+    resultsParameter : "searchResults",
+    resultId : "id",
+    resultValue : "pageFullName",
+    resultInfo : "pageFullName"
+  }
+  var containers = (event &amp;&amp; event.memo.elements) || [$('body')];
+  containers.each(function(container) {
+    container.select('input.suggestPages.multipleSelection').each(function(input) {
+      if (!input.hasClassName('initialized')) {       
+        var suggest = new XWiki.widgets.Suggest(input, options);        
+        new DocumentPicker(input, suggest);
+        input.addClassName('initialized');
+      }
+    });
+  });
+  return true;
+};
+(XWiki.domIsLoaded &amp;&amp; init()) || document.observe('xwiki:dom:loaded', init);
+document.observe('xwiki:dom:updated', init);
+
+// End XWiki augmentation.
+return XWiki;
+})(XWiki || {});</code>
+    </property>
+    <property>
+      <name/>
+    </property>
+    <property>
+      <parse>0</parse>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <content>{{velocity}}
+#if ($type == 'edit' || $type == 'search')
+  #set ($isMultiSelect = $field.getProperty('multiSelect').value == 1)
+  #if ($isMultiSelect)
+    ## Needed for sorting the selected values.
+    #set ($discard = $xwiki.jsfx.use('js/scriptaculous/dragdrop.js'))
+  #end
+  ## Needed for displaying a list of suggestions based on the user input (included by default).
+  #set ($discard = $xwiki.ssfx.use('uicomponents/suggest/suggest.css', true))
+  #set ($discard = $xwiki.jsfx.use('uicomponents/suggest/suggest.js', true))
+  ## Needed for managing the selected values. In single selection mode the value selected from the list of suggestions
+  ## overwrites the previously selected value.
+  #set ($discard = $xwiki.ssfx.use('uicomponents/suggest/suggestPicker.css', true))
+  #set ($discard = $xwiki.jsfx.use('uicomponents/suggest/suggestPicker.js', true))
+  ## The actual document picker. Provides a custom display for the document suggestions and selected documents.
+  #set ($discard = $xwiki.jsx.use('Collections.DocumentPicker'))
+  #set ($id = $escapetool.xml("${prefix}${name}"))
+  {{html}}&lt;input type="text" id="$!id" name="$!id" value="$!escapetool.xml($stringtool.join($value, ','))"
+    class="suggestPages#if ($isMultiSelect) multipleSelection#end" /&gt;{{/html}}
+#elseif ($type == 'view' || $type == 'rendered')
+  #set ($values = $value.split('\s*,\s*'))
+  #set ($selectedDocuments = [])
+  #foreach ($value in $values)
+    #if ($value.length() &gt; 0)
+      #set ($discard = $selectedDocuments.add($value))
+    #end
+  #end
+  #if ($selectedDocuments.size() &gt; 0)
+    (% class="documents" %)
+    #foreach ($document in $selectedDocuments)
+      * $document
+    #end
+  #end
+#elseif ($type == 'hidden')
+  #set ($id = $escapetool.xml("${prefix}${name}"))
+  {{html}}&lt;input type="hidden" id="$!id" name="$!id" value="$!escapetool.xml($value)" /&gt;{{/html}}
+#else
+  ## In order for the custom displayer to be taken into account, the result of its evaluation with an unknown display
+  ## mode must not be empty. Let's output something.
+  Unknown display mode.
+#end
+{{/velocity}}</content>
+</xwikidoc>

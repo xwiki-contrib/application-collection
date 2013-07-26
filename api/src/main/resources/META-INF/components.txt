@@ -1,0 +1,3 @@
+org.xwiki.collection.CollectionScriptService
+org.xwiki.collection.internal.StaticCollectionStore
+org.xwiki.collection.internal.QueryCollectionStore

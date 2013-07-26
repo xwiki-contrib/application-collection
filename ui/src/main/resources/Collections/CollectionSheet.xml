@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+  <web>Collections</web>
+  <name>CollectionSheet</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>Collections.CollectionClass</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1374670799000</creationDate>
+  <date>1374831027000</date>
+  <contentUpdateDate>1374831027000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <object>
+    <class>
+      <name>XWiki.SheetDescriptorClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <action>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <name>action</name>
+        <number>1</number>
+        <picker>0</picker>
+        <prettyName>Action</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </action>
+    </class>
+    <name>Collections.CollectionSheet</name>
+    <number>0</number>
+    <className>XWiki.SheetDescriptorClass</className>
+    <guid>d0aeb632-33a6-468d-ab26-07f6668c662c</guid>
+    <property>
+      <action>view</action>
+    </property>
+  </object>
+  <content>{{velocity}}
+#if ($request.export)
+  ## Determine the collection of documents.
+  #set ($documents = $services.collection.get($doc.documentReference))
+  ## Perform the export.
+  #set ($name = $request.name.trim())
+  #if ("$!name" == '')
+    #set ($name = $doc.name)
+  #end
+  #set($package = $xwiki.package)
+  #set ($discard = $package.setName($name))
+  #set ($withVersions = $request.history == 'true')
+  #set ($discard = $package.setWithVersions($withVersions))
+  #if ("$!request.author" != '')
+    #set ($discard = $package.setAuthorName($request.author))
+  #end
+  #if ("$!request.description" != '')
+    #set ($discard = $package.setDescription($request.description))
+  #end
+  #if ("$!request.licence" != '')
+    #set ($discard = $package.setLicence($request.licence))
+  #end
+  #if ("$!request.version" != '')
+    #set ($discard = $package.setVersion($request.version))
+  #end
+  #set ($isBackup = $request.backup == 'true')
+  #set ($discard = $package.setBackupPack($isBackup))
+  #foreach ($document in $documents)
+    #if ($xwiki.hasAccessLevel('view', $xcontext.user, "$!document"))
+      #set ($discard = $package.add("$!document"))
+    #end
+  #end
+  #set ($discard = $package.export())
+#else
+  {{html}}
+  &lt;form action=""&gt;
+    &lt;p class="buttons"&gt;
+      &lt;span class="buttonwrapper"&gt;
+        &lt;input class="button" type="submit" name="export" value="Export" /&gt;
+      &lt;/span&gt;
+    &lt;/p&gt;
+  &lt;/form&gt;
+  {{/html}}
+
+  #foreach ($item in $services.collection.get($doc.documentReference))
+    * [[$item]]
+  #end
+#end
+{{/velocity}}</content>
+</xwikidoc>

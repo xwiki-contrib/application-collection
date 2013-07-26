@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+  <web>Collections</web>
+  <name>StaticCollectionSheet</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>Collections.StaticCollectionClass</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1374670798000</creationDate>
+  <date>1374825408000</date>
+  <contentUpdateDate>1374825408000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <object>
+    <class>
+      <name>XWiki.SheetDescriptorClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <action>
+        <customDisplay/>
+        <disabled>0</disabled>
+        <name>action</name>
+        <number>1</number>
+        <picker>0</picker>
+        <prettyName>Action</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <validationMessage/>
+        <validationRegExp/>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </action>
+    </class>
+    <name>Collections.StaticCollectionSheet</name>
+    <number>0</number>
+    <className>XWiki.SheetDescriptorClass</className>
+    <guid>33db8581-84bf-46b2-8dc3-9750eb90e141</guid>
+    <property>
+      <action>edit</action>
+    </property>
+  </object>
+  <content>{{velocity}}
+(% class="xform half" %)(((
+  ; {{html}}&lt;label for="Collections.StaticCollectionClass_0_pages"&gt;$doc.displayPrettyName('pages')&lt;/label&gt;{{/html}}##
+    (% class="xHint" %)$services.localization.render('collections.static.pages.hint')
+  : $doc.display('pages')
+)))
+{{/velocity}}</content>
+</xwikidoc>

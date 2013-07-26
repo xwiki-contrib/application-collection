@@ -1,4 +1,4 @@
-application-collection
+Collection Application
 ======================
 
-Simple application to create collections of wiki pages
+Simple application to create collections of wiki pages.

@@ -27,7 +27,7 @@
   <parent>
     <groupId>org.xwiki.commons</groupId>
     <artifactId>xwiki-commons-pom</artifactId>
-    <version>4.5.3</version>
+    <version>4.5.4</version>
   </parent>
   <groupId>org.xwiki.contrib</groupId>
   <artifactId>application-collection</artifactId>
@@ -35,6 +35,10 @@
   <name>Collection Application Parent POM</name>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.xwiki.org/browse/XCONTRIB/component/13145</url>
+  </issueManagement>
   <developers>
     <developer>
       <id>mflorea</id>

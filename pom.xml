@@ -31,7 +31,7 @@
   </parent>
   <groupId>org.xwiki.contrib</groupId>
   <artifactId>application-collection</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <name>Collection Application Parent POM</name>
   <packaging>pom</packaging>
   <inceptionYear>2013</inceptionYear>
@@ -53,7 +53,7 @@
     <connection>scm:git:git://github.com/xwiki-contrib/application-collection.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/application-collection.git</developerConnection>
     <url>https://github.com/xwiki-contrib/application-collection</url>
-    <tag>HEAD</tag>
+    <tag>application-collection-1.1</tag>
   </scm>
   <distributionManagement>
     <repository>

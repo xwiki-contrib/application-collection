@@ -42,45 +42,45 @@
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>application-collection-api</artifactId>
       <version>${project.version}</version>
-      <scope>rutime</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.platform</groupId>
       <artifactId>xwiki-platform-rendering-macro-velocity</artifactId>
       <version>${commons.version}</version>
-      <scope>rutime</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.platform</groupId>
       <artifactId>xwiki-platform-rendering-macro-include</artifactId>
       <version>${commons.version}</version>
-      <scope>rutime</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.rendering</groupId>
       <artifactId>xwiki-rendering-macro-html</artifactId>
       <version>${commons.version}</version>
-      <scope>rutime</scope>
+      <scope>runtime</scope>
     </dependency>
     <!-- Required for document translation bundle -->
     <dependency>
       <groupId>org.xwiki.platform</groupId>
       <artifactId>xwiki-platform-localization-source-wiki</artifactId>
       <version>${commons.version}</version>
-      <scope>rutime</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.xwiki.platform</groupId>
       <artifactId>xwiki-platform-sheet-ui</artifactId>
       <version>${commons.version}</version>
-      <scope>rutime</scope>
+      <scope>runtime</scope>
       <type>xar</type>
     </dependency>
     <dependency>
       <groupId>org.xwiki.platform</groupId>
       <artifactId>xwiki-platform-livetable-ui</artifactId>
       <version>${commons.version}</version>
-      <scope>rutime</scope>
+      <scope>runtime</scope>
       <type>xar</type>
     </dependency>
     <!-- Optional dependency, for the Applications panel -->
